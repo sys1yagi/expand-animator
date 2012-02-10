@@ -2,5 +2,8 @@ sample/ExpandAnimatorSample/bin/*
 sample/ExpandAnimatorSample/gen/*
 lib/ExplandAnimator/gen/*
 lib/ExplandAnimator/bin/*
-
+.DS_Store
+*.apk
+*.ap_
+*.dec
 
