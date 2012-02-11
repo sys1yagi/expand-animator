@@ -19,7 +19,7 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="300dp"
+            android:layout_height="150dp"
             android:background="#ffccddaa" >
         </View>
     </LinearLayout>
