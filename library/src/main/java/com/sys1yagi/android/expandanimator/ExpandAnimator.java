@@ -1,7 +1,7 @@
 package com.sys1yagi.android.expandanimator;
 
-import android.os.Handler;
-import android.os.Message;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.Interpolator;
@@ -18,14 +18,14 @@ public class ExpandAnimator {
 
         void onStartExpand(ExpandAnimator e);
 
-        void onStartUnexpand(ExpandAnimator e);
+        void onStartContract(ExpandAnimator e);
 
         void onExpanded(ExpandAnimator e);
 
-        void onUnexpanded(ExpandAnimator e);
+        void onContract(ExpandAnimator e);
     }
 
-    private float duration = 1000.0f;
+    private int duration = 1000;
 
     private Interpolator interpolator = new LinearInterpolator();
 
@@ -50,7 +50,7 @@ public class ExpandAnimator {
 
     public void adjustSizeImmediately() {
         adjustSize();
-        target.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, originHeight));
+        target.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, originHeight));
     }
 
     public float getDuration() {
@@ -73,16 +73,6 @@ public class ExpandAnimator {
         return target;
     }
 
-    private int move(int origin, long time) {
-        long diff = (System.currentTimeMillis() - time);
-        if (diff >= duration) {
-            return origin;
-        } else {
-            float t = interpolator.getInterpolation(diff / duration);
-            return (int) (origin * t);
-        }
-    }
-
     public boolean isExpand() {
         return target.getHeight() > 0;
     }
@@ -90,41 +80,52 @@ public class ExpandAnimator {
     public void contract() {
         if (target.getHeight() <= 0) {
             if (listener != null) {
-                listener.onUnexpanded(this);
+                listener.onContract(this);
             }
             return;
         }
-        final long start = System.currentTimeMillis();
-        Handler animationHandler = new Handler() {
+        ValueAnimator animator = ValueAnimator.ofInt(originHeight, 0)
+                .setDuration(duration);
+        animator.setInterpolator(interpolator);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void handleMessage(Message msg) {
-                msg.arg1 = originHeight - move(originHeight, start);
-                if (msg.arg1 < 0) {
-                    msg.arg1 = 0;
-                }
-                target.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, msg.arg1));
-                if (msg.arg1 <= 0) {
-                    if (listener != null) {
-                        listener.onUnexpanded(This());
-                    }
-                } else {
-                    try {
-                        Thread.sleep(1);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Message m = this.obtainMessage(0);
-                    m.arg1 = msg.arg1;
-                    this.sendMessage(m);
-                }
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Integer height = (Integer) animation.getAnimatedValue();
+                target.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));
             }
-        };
-        Message msg = animationHandler.obtainMessage(0);
-        msg.arg1 = target.getHeight();
-        animationHandler.sendMessage(msg);
-        if (listener != null) {
-            listener.onStartUnexpand(this);
-        }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                listener.onStartContract(This());
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                listener.onContract(This());
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                // TODO
+                listener.onContract(This());
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                // no op
+            }
+        });
+        animator.start();
     }
 
     public void expand() {
@@ -135,36 +136,47 @@ public class ExpandAnimator {
             }
             return;
         }
-        final long start = System.currentTimeMillis();
-        Handler animationHandler = new Handler() {
+        ValueAnimator animator = ValueAnimator.ofInt(0, originHeight)
+                .setDuration(duration);
+        animator.setInterpolator(interpolator);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void handleMessage(Message msg) {
-                msg.arg1 = move(originHeight, start);
-                if (msg.arg1 > originHeight) {
-                    msg.arg1 = originHeight;
-                }
-                target.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, msg.arg1));
-                if (msg.arg1 >= originHeight) {
-                    if (listener != null) {
-                        listener.onExpanded(This());
-                    }
-                } else {
-                    try {
-                        Thread.sleep(1);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Message m = this.obtainMessage(0);
-                    m.arg1 = msg.arg1;
-                    this.sendMessage(m);
-                }
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Integer height = (Integer) animation.getAnimatedValue();
+                target.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));
             }
-        };
-        Message msg = animationHandler.obtainMessage(0);
-        msg.arg1 = 0;
-        animationHandler.sendMessage(msg);
-        if (listener != null) {
-            listener.onStartExpand(this);
-        }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                listener.onStartExpand(This());
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                listener.onExpanded(This());
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                if (listener == null) {
+                    return;
+                }
+                // TODO
+                listener.onExpanded(This());
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                // no op
+            }
+        });
+        animator.start();
     }
 }

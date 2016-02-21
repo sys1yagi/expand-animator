@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartUnexpand(ExpandAnimator e) {
+            public void onStartContract(ExpandAnimator e) {
                 trigger.setText("閉じている");
             }
 
             @Override
-            public void onUnexpanded(ExpandAnimator e) {
+            public void onContract(ExpandAnimator e) {
                 trigger.setText("閉じた");
             }
         });

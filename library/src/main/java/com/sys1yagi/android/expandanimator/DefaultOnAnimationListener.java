@@ -8,7 +8,7 @@ public class DefaultOnAnimationListener implements ExpandAnimator.OnAnimationLis
     }
 
     @Override
-    public void onStartUnexpand(ExpandAnimator e) {
+    public void onStartContract(ExpandAnimator e) {
         // no op
     }
 
@@ -18,7 +18,7 @@ public class DefaultOnAnimationListener implements ExpandAnimator.OnAnimationLis
     }
 
     @Override
-    public void onUnexpanded(ExpandAnimator e) {
+    public void onContract(ExpandAnimator e) {
         // no op
     }
 }
