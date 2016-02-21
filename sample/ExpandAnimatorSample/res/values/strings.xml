@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="title">Expandable!!</string>
-    <string name="app_name">ExpandAnimatorSample</string>
-    <string name="add">add</string>
-    <string name="remove">remove</string>
-
-</resources>

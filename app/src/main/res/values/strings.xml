@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">expand-animator</string>
+    <string name="title">Expandable!!</string>
+    <string name="add">add</string>
+    <string name="remove">remove</string>
+
+</resources>

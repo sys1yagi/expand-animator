@@ -7,3 +7,8 @@ lib/ExplandAnimator/bin/*
 *.ap_
 *.dec
 
+*.idea
+*.iml
+.gradle
+build
+local.properties
