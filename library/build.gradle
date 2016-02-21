@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+group = 'com.sys1yagi.android.expandanimator'
 
 android {
     compileSdkVersion 23
