@@ -102,7 +102,7 @@ public class ExpandAnimator {
                 if (msg.arg1 < 0) {
                     msg.arg1 = 0;
                 }
-                target.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, msg.arg1));
+                target.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, msg.arg1));
                 if (msg.arg1 <= 0) {
                     if (listener != null) {
                         listener.onUnexpanded(This());
