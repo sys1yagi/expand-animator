@@ -59,22 +59,22 @@ public class MainActivity extends AppCompatActivity {
         ExpandAnimator animator = new ExpandAnimator(v, new ExpandAnimator.OnAnimationListener() {
             @Override
             public void onExpanded(ExpandAnimator e) {
-                trigger.setText("開いた");
+                trigger.setText("Opened");
             }
 
             @Override
             public void onStartExpand(ExpandAnimator e) {
-                trigger.setText("開いている");
+                trigger.setText("Opening");
             }
 
             @Override
             public void onStartContract(ExpandAnimator e) {
-                trigger.setText("閉じている");
+                trigger.setText("Closing");
             }
 
             @Override
             public void onContract(ExpandAnimator e) {
-                trigger.setText("閉じた");
+                trigger.setText("Closed");
             }
         });
         animator.setDuration(1200);
