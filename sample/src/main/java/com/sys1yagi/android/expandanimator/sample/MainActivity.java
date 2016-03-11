@@ -5,8 +5,8 @@ import com.sys1yagi.android.expandanimator.ExpandAnimator;
 import com.sys1yagi.android.expandanimator.ExpandAnimatorManager;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 if (manager.get(CONTAINER_2).isExpand()) {
                     manager.contract(CONTAINER_2);
                 } else {
-                    // 他のコンテナを閉じながら自分のコンテナを開きます
                     manager.exclusiveExpand(CONTAINER_2);
                 }
             }
@@ -93,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
                         random.nextInt(255 - margin) + margin
                 );
                 view.setBackgroundColor(c);
-                container.addView(view, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+                container.addView(view, 0,
+                        new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
                 manager.adjustSizeImmediately(CONTAINER_2);
             }
         });
@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                     manager.contract(key);
                 } else {
                     manager.expand(key);
-                    // 他のコンテナを閉じながら自分のコンテナを開きます
                     // manager.exclusiveExpand(key);
                 }
             }

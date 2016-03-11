@@ -8,10 +8,6 @@ public class ExpandAnimatorManager {
 
     private Map<String, ExpandAnimator> animators = new HashMap<String, ExpandAnimator>();
 
-    public ExpandAnimatorManager() {
-
-    }
-
     public void put(String key, ExpandAnimator anim) {
         animators.put(key, anim);
     }
