@@ -25,7 +25,5 @@ test:
     - ./gradlew library:lint
   post:
     # copy the build outputs to artifacts
-    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-    - cp -r app/build/reports $CIRCLE_ARTIFACTS
-    # copy the test results to the test results directory - disabled for now
-    #- cp -r app/build/reports/tests/* $CIRCLE_TEST_REPORTS
+    - cp -r library/build/outputs $CIRCLE_ARTIFACTS
+    - cp -r library/build/reports $CIRCLE_ARTIFACTS
