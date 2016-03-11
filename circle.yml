@@ -18,13 +18,11 @@ dependencies:
 test:
   override:
     # build the project
-    - ./gradlew --stacktrace app:assembleDebug -PpreDexEnable=false -Pcom.android.build.threadPoolSize=1 -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms512m -Xmx512m" -Dorg.gradle.daemon=false
+    - ./gradlew --stacktrace library:assembleDebug
     # run test
-    - ./gradlew test
+    - ./gradlew library:test
     # run lint
-    - ./gradlew lint
-    # run robolectric tests - disabled for now
-    #- ./gradlew testStagingDebugUnitTest -PdisablePreDex
+    - ./gradlew library:lint
   post:
     # copy the build outputs to artifacts
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
