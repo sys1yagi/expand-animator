@@ -1,7 +1,7 @@
 expand animator
 =============
 
-
+![](https://raw.githubusercontent.com/sys1yagi/expand-animator/master/art/demo.gif)
 
 ## How to use
 
