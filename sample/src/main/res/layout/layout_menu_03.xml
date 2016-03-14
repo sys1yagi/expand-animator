@@ -1,27 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/trigger3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="3" />
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        android:id="@+id/container3"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="10dp" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:background="#ffccddaa" >
-        </View>
+        <Button
+                android:id="@+id/trigger3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3"/>
+
+        <LinearLayout
+                android:id="@+id/container3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#ffccddaa">
+            </View>
+        </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</layout>

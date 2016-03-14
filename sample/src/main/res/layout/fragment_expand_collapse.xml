@@ -1,0 +1,40 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/title"
+                    android:textColor="#ff000000"
+                    android:textSize="30dp"/>
+
+            <include
+                    android:id="@+id/menu01"
+                    layout="@layout/layout_menu_01"/>
+
+            <include
+                    android:id="@+id/menu02"
+                    layout="@layout/layout_menu_02"/>
+
+            <include
+                    android:id="@+id/menu03"
+                    layout="@layout/layout_menu_03"/>
+
+            <include
+                    android:id="@+id/menu04"
+                    layout="@layout/layout_menu_04"/>
+
+            <include
+                    android:id="@+id/menu05"
+                    layout="@layout/layout_menu_05"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+</FrameLayout>
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/title"
-                android:textColor="#ff000000"
-                android:textSize="30dp"/>
-
-        <include layout="@layout/layout_menu_01"/>
-
-        <include layout="@layout/layout_menu_02"/>
-
-        <include layout="@layout/layout_menu_03"/>
-
-        <include layout="@layout/layout_menu_04"/>
-
-        <include layout="@layout/layout_menu_05"/>
-    </LinearLayout>
-</ScrollView>

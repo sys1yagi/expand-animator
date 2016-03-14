@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
@@ -25,6 +26,8 @@ dependencies {
     // for development
     // compile project(':library')
     compile 'com.github.sys1yagi:expand-animator:0.1.0'
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
-    compile 'com.android.support:recyclerview-v7:24.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:recyclerview-v7:23.1.0'
+    apt 'com.github.sys1yagi.fragment-creator:processor:0.8.1'
+    compile 'com.github.sys1yagi.fragment-creator:library:0.8.1'
 }
